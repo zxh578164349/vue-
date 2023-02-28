@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="./js/vue.js"></script>
+    
+    <title>Document</title>
+</head>
+<body>
+    <div id="root">
+        
+        
+        <h2>名字：{{student.name}}</h2>
+        <h2>年龄：{{student.age}}</h2>
+        <h2 v-if="student.sex">性别：{{student.sex}}</h2>
+
+        <h2>
+            添加性别<select v-model="sex_add">
+                <option value="">请选择性别</option>
+                <option>男</option>
+                <option>女</option>
+            </select>
+        </h2>
+        <!-- <input type="text" v-model="sex_add"/> -->
+        
+        <button @click="addSex()" >添加属性</button>
+       
+
+        
+        
+       
+    </div>
+
+    <script type="text/javascript">
+        Vue.config.productionTip = false
+       
+
+        const vm=new Vue({
+            el:'#root',
+            data:{
+                nameabc:'尚硅谷',                
+                student:{
+                    name:'张三',
+                    age:30
+                },
+                sex_add:''
+                
+                                                     
+            } ,
+            methods: {
+                addSex(){
+                    Vue.set(this.student,'sex',this.sex_add)
+
+                }
+            },      
+            
+        })
+
+
+    </script>
+    
+</body>
+</html>

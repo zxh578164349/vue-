@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script type="text/javascript" src="../js/vue.js"></script>
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="root">
+    <h2>欢迎来到{{sname}}</h2>
+    <school></school>
+    <hr />
+    <student></student>
+
+
+  </div>
+
+
+  <script type="text/javascript">
+    const school = Vue.extend({
+      template: `<div>
+           <h2>学校名称：{{schoolName}}</h2>
+           <h2>学校地址：{{address}}</h2>
+           </div>
+          `,
+      data () {
+        return {
+          schoolName: '尚硅谷乐园',
+          address: '北京路'
+        }
+      }
+
+    })
+    const student = Vue.extend({
+      template: `
+        <div>
+          <h2>名字：{{name}}</h2>
+          <h2>年龄：{{age}}</h2>
+        </div>
+      `,
+      data () {
+        return {
+          name: '张三',
+          age: 18
+        }
+      }
+    })
+    new Vue({
+      el: '#root',
+      data: {
+        sname: '尚硅谷',
+        address2: '东莞'
+
+      },
+      components: {
+        school,
+        student
+
+      }
+    })
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="./js/vue.js"></script>
+    
+    <title>Document</title>
+</head>
+<body>
+    <div id="root">
+        <h2>遍历列表</h2>
+        <ul>
+            <li v-for="obj,index in arr" :key="index">{{obj.name}}-{{obj.age}}-{{index}}</li>
+        </ul>
+        <ul>
+            <li v-for="(obj ,index) of arr" :key="index">{{obj.name}}-{{obj.age}}-{{index}}</li>
+        </ul>
+        <h2>遍历对象</h2>
+        <ul>
+            <li v-for="value,index in car" :key="index">{{index}}-{{value}}</li>
+        </ul>
+        <h2>遍历字符串</h2>
+        <ul>
+            <li v-for="value,index in str" :key="index">{{index}}-{{value}}</li>
+        </ul>
+        <h2>遍历指定次数</h2>
+        <ul>
+            <li v-for="value,index in 5" :key="index">{{index}}-{{value}}</li>
+        </ul>
+       
+    </div>
+
+    <script type="text/javascript">
+        const vm=new Vue({
+            el:'#root',
+            data:{
+                name:'尚硅谷',
+                arr:[
+                    {id:'001',name:'张三',age:30},
+                    {id:'002',name:'李四',age:40},
+                    {id:'003',name:'王五',age:50}
+                ],
+                car:{
+                    name:'rav4',
+                    price:'25万',
+                    color:'white'
+                },
+                str:'hello'
+               
+            },
+            methods:{
+                changeMood(){
+                    const arr=['happy','sad','atguigu1']
+                    const index=Math.floor(Math.random()*3) 
+                    this.mood=arr[index]
+                    console.log(index)
+                }
+            }
+        })
+
+
+    </script>
+    
+</body>
+</html>

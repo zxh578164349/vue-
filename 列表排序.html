@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="./js/vue.js"></script>
+    
+    <title>Document</title>
+</head>
+<body>
+    <div id="root">
+        
+        <input type="text" placeholder="请输入名字" v-model="keyWord"/>
+        <h2>人员列表</h2>
+        <ul>
+            <li v-for="obj,index in filpersons" :key="index">{{obj.name}}-{{obj.age}}-{{obj.age}}</li>
+        </ul>
+
+        <button @click="sortType=1">升序</button>
+        <button @click="sortType=2">降序</button>
+        <button @click="sortType=0">原序</button>
+        
+       
+    </div>
+
+    <script type="text/javascript">
+        Vue.config.productionTip = false
+       
+
+        const vm=new Vue({
+            el:'#root',
+            data:{
+                name:'尚硅谷',                
+                persons:[
+						{id:'001',name:'马冬梅',age:36,sex:'女'},
+						{id:'002',name:'周冬雨',age:20,sex:'女'},
+						{id:'003',name:'周杰伦',age:40,sex:'男'},
+						{id:'004',name:'温兆伦',age:22,sex:'男'}
+				],
+                keyWord:'',
+                sortType:0,        //1升序   2降序   0原序                                       
+            },         
+            computed:{
+                filpersons(){
+                    const arr= this.persons.filter((p)=>{
+                        return p.name.indexOf(this.keyWord)!==-1
+
+                    })
+                    if(this.sortType){
+                        arr.sort((p1,p2)=>{
+                           return this.sortType===1?p1.age-p2.age:p2.age-p1.age
+                        })
+                    }
+                    return arr
+
+                }
+            }
+        })
+
+
+    </script>
+    
+</body>
+</html>

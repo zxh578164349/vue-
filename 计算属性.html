@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="./js/vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="root">
+        姓：<input type="text" v-model="firstName"/>
+        名：<input type="text" v-model="lastName"/></br>
+        全名：<span>{{firstName}}-{{lastName}}</span></br>
+        全名2：<span>{{fullname()}}</span></br>
+        全名3：<span>{{fullname2}}</span></br>
+
+    </div>
+
+    <script type="text/javascript">
+        const vm=new Vue({
+            el:'#root',
+            data:{
+                firstName:'张',
+                lastName:'三'
+            },
+            methods: {
+                fullname(){
+                    return this.firstName+'-'+this.lastName
+                }
+            },
+            computed:{
+                fullname2:{
+                    get(){
+                        console.log('get被调用')
+                        return this.firstName+'-'+this.lastName
+                        
+                    },
+                    set(value){
+                        console.log('set',value)
+                        const arr=value.split('-')                      
+                        this.firstName=arr[0]
+                        this.lastName=arr[1]
+
+                    }
+                }
+            }
+        })
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="./js/vue.js"></script>
+    
+    <title>Document</title>
+</head>
+<body>
+    <div id="root">
+        <h2>遍历列表</h2>
+        <ul>
+            <li v-for="obj,index in arr" :key="index">{{obj.name}}-{{obj.age}}-{{index}}<input type="text"></li>
+        </ul>
+        
+        <button @click.once="add_unshift()">添加-unshift</button>
+        <button @click.once="add_push()">添加-push</button>
+       
+       
+    </div>
+
+    <script type="text/javascript">
+        const vm=new Vue({
+            el:'#root',
+            data:{
+                name:'尚硅谷',
+                arr:[
+                    {id:'001',name:'张三',age:30},
+                    {id:'002',name:'李四',age:40},
+                    {id:'003',name:'王五',age:50}
+                ],
+                car:{
+                    name:'rav4',
+                    price:'25万',
+                    color:'white'
+                },
+                str:'hello'
+               
+            },
+            methods:{
+                add_unshift(){
+                    this.arr.unshift({id:'004',name:'老六',age:60})
+                },
+                add_push(){
+                    this.arr.push({id:'004',name:'老六',age:60})
+                }
+            }
+        })
+
+
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="root">
+        <h1>hello,{{name}}</h1>
+
+    </div>
+
+    <script>
+        const vm=new Vue({
+
+           // el:'#root',     //el 写法1
+            /* data:{            //data写法1：对象式
+                name:'java',
+                age:18
+            } */
+            data(){          //data写法2：函数式
+                
+                console.log('*********',this)
+                return{
+                    name:'尚硅谷'
+                }
+            }
+        })
+        vm.$mount('#root')   //el 写法2
+        
+
+
+    </script>
+    
+</body>
+</html>
